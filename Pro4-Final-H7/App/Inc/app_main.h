@@ -9,7 +9,7 @@ extern "C" {
 #include "main.h"
 #include "cmsis_os.h"
 #include "sensor.h"
-#include "mavlink_communication.h"
+#include <mavlinkHandler.h>
 #include "motorControl.h"
 
 void app_main();

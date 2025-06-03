@@ -1,4 +1,4 @@
-#include "mavlink_communication.h"
+#include <mavlinkHandler.h>
 
 /* external defines ----------------------------------------------------------*/
 extern UART_HandleTypeDef huart6;
