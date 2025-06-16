@@ -1,5 +1,5 @@
-#ifndef __MAVLINK_COMMUNICATION_H
-#define __MAVLINK_COMMUNICATION_H
+#ifndef __MAVLINK_HANDLER_H
+#define __MAVLINK_HANDLER_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,4 +36,4 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
 }
 #endif
 
-#endif /* __MAVLINK_COMMUNICATION_H */
+#endif /* __MAVLINK_HANDLER_H */

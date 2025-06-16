@@ -195,6 +195,11 @@ void processBMI088gData(void *argument) {
 
 /* Free-RTOS Magnetometer-Tasks ----------------------------------------------*/
 
+/**
+ * @brief   RTOS-Task zum Auslesen des Magnetometers.
+ *          Wird durch ein Flag aktiviert und startet den Datenabruf.
+ * @return  None
+ */
 void interruptReadBMM350(void *argument) {
 
 	for (;;) {
@@ -209,6 +214,13 @@ void interruptReadBMM350(void *argument) {
 
 }
 
+
+/**
+ * @brief   RTOS-Task zum Verarbeiten und speichern der Daten des Magnetometers.
+ *          Wird durch die Queue aktiviert und speichert die Daten in uT als aktuelles
+ *          Magnetfeld.
+ * @return  None
+ */
 void processBMM350Data(void *argument) {
 
 	for (;;) {
@@ -239,10 +251,20 @@ void processBMM350Data(void *argument) {
 
 /* Free-RTOS Madgwick Task ---------------------------------------------------*/
 
+/**
+ * @brief   RTOS-Task zum Auslösen des MAdgwick-Filters.
+ * @return  None
+ */
 void madgwickTimerCallback(void *argument) {
 	osEventFlagsSet(madgwickTimerFlag, flagIntReceived);
 }
 
+/**
+ * @brief   RTOS-Task des Madgwick-Filters. Wird durch einen Timer periodisch ausgelöst.
+ * 			Abhängig davo, ob Magnetometer genutzt wird oder nicht, wird eine andere Funktion aufgerufen.
+ * 			Das erhaltene Quaternion wird an die Motorsteuerung (motorControl) weitergegeben.
+ * @return  None
+ */
 void madgwickTask(void *argument) {
 	for (;;) {
 		osEventFlagsWait(madgwickTimerFlag, flagIntReceived, osFlagsWaitAny,
@@ -286,6 +308,11 @@ void madgwickTask(void *argument) {
 	}
 }
 
+/**
+ * @brief   RTOS-Task, welcher ein Quaternion an die UART-Schnitstelle sendet. Kann z.B. für die Visualisierung genutzt werden.
+ * @note	https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor/webserial-visualizer
+ * @return  None
+ */
 void sendQuaternionTask(void *argument) {
 	for (;;) {
 		FusionQuaternion quaternion;
@@ -309,6 +336,10 @@ void sendQuaternionTask(void *argument) {
 	}
 }
 
+/**
+ * @brief   RTOS-Task, welcher die Daten des Magnetometers an die UART-Schnittstelle sendet. Wird für die Kalibrierung genutzt.
+ * @return  None
+ */
 void sendMagnetometerDataTask(void *argument) {
 	for (;;) {
 		FusionVector magData;
@@ -330,6 +361,10 @@ void sendMagnetometerDataTask(void *argument) {
 	}
 }
 
+/**
+ * @brief   Startet die RTOS-Tasks der ganzen Sensoren und initalisiert den Timer.
+ * @return  None
+ */
 void initSensorFusion(void) {
 
 	bmm350IntFlag = osEventFlagsNew(NULL);
@@ -381,6 +416,11 @@ void initSensorFusion(void) {
 
 /* Interrupts / Callbacks ----------------------------------------------------*/
 
+/**
+ * @brief   Callback der Interrupts an den GPIO-Pins. Sendet ein Flag an den entsprechenden Task.
+ * @param   GPIO_Pin: Der Pin, der den Interrupt ausgelöst hat.
+ * @return  None
+ */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	switch (GPIO_Pin) {
 	case INT1_ACC_Pin:
@@ -403,12 +443,26 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
 /* Delay Config --------------------------------------------------------------*/
 
+/**
+ * @brief   Für die API wird ein us-Delay benötigt. Rundet die Befehle auf die nächste ms auf.
+ * @param   period: Verzögerung in Mikrosekunden.
+ * @param   intf_ptr: Nicht verwendet.
+ * @return  None
+ */
 void user_delay_us(uint32_t period, void *intf_ptr) {
 	HAL_Delay((period + 999) / 1000);
 }
 
 /* BMM350 Config -------------------------------------------------------------*/
 
+/**
+ * @brief   I2C-Read-Funktion für BMM350.
+ * @param   reg_addr: Registeradresse.
+ * @param   reg_data: Zeiger auf Zielpuffer.
+ * @param   len: Anzahl der zu lesenden Bytes.
+ * @param   intf_ptr: Zeiger auf I2C-Adresse.
+ * @return  0 bei Erfolg, -1 bei Fehler.
+ */
 int8_t bmm350_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len,
 		void *intf_ptr) {
 	uint8_t dev_addr = *((uint8_t*) intf_ptr);
@@ -419,6 +473,14 @@ int8_t bmm350_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len,
 		return -1;
 }
 
+/**
+ * @brief   I2C-Write-Funktion für BMM350.
+ * @param   reg_addr: Registeradresse.
+ * @param   reg_data: Zeiger auf Datenpuffer.
+ * @param   len: Anzahl der zu schreibenden Bytes.
+ * @param   intf_ptr: Zeiger auf I2C-Adresse.
+ * @return  0 bei Erfolg, -1 bei Fehler.
+ */
 int8_t bmm350_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len,
 		void *intf_ptr) {
 	uint8_t dev_addr = *((uint8_t*) intf_ptr);
@@ -429,6 +491,10 @@ int8_t bmm350_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len,
 		return -1;
 }
 
+/**
+ * @brief   Initialisiert und konfiguriert den BMM350 Magnetometer.
+ * @return  None
+ */
 void userInitBMM350() {
 
 	bmm350.read = bmm350_i2c_read;
@@ -453,6 +519,14 @@ void userInitBMM350() {
 
 /* BMI088 Config -------------------------------------------------------------*/
 
+/**
+ * @brief   SPI-Read-Funktion für BMI088 (ACC und GYRO).
+ * @param   reg_addr: Registeradresse.
+ * @param   reg_data: Zeiger auf Zielpuffer.
+ * @param   len: Anzahl der zu lesenden Bytes.
+ * @param   intf_ptr: Zeiger auf Interface-Struktur.
+ * @return  0 bei Erfolg, -1 bei Fehler.
+ */
 int8_t bmi088_spi_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len,
 		void *intf_ptr) {
 	bmi088_interface_t *iface = (bmi088_interface_t*) intf_ptr;
@@ -470,6 +544,14 @@ int8_t bmi088_spi_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len,
 	return 0;
 }
 
+/**
+ * @brief   SPI-Write-Funktion für BMI088 (ACC und GYRO).
+ * @param   reg_addr: Registeradresse.
+ * @param   reg_data: Zeiger auf Datenpuffer.
+ * @param   len: Anzahl der zu schreibenden Bytes.
+ * @param   intf_ptr: Zeiger auf Interface-Struktur.
+ * @return  0 bei Erfolg, -1 bei Fehler.
+ */
 int8_t bmi088_spi_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len,
 		void *intf_ptr) {
 	bmi088_interface_t *iface = (bmi088_interface_t*) intf_ptr;
@@ -491,6 +573,10 @@ int8_t bmi088_spi_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len,
 	return 0;
 }
 
+/**
+ * @brief   Initialisiert und konfiguriert den BMI088 IMU.
+ * @return  None
+ */
 void userInitBMI088() {
 
 	acc_iface.hspi = &hspi1;

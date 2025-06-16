@@ -69,10 +69,23 @@ typedef struct {
 
 /* Functions ----------------------------------------------------------------*/
 
+/**
+ * @brief   Startet die RTOS-Tasks der ganzen Sensoren und initalisiert den Timer.
+ * @return  None
+ */
 void initSensorFusion(void);
+
+/**
+ * @brief   Initialisiert und konfiguriert den BMM350 Magnetometer.
+ * @return  None
+ */
 void userInitBMM350();
+
+/**
+ * @brief   Initialisiert und konfiguriert den BMI088 IMU.
+ * @return  None
+ */
 void userInitBMI088();
-void getQuaternion(float *QuaternionArray);
 
 #ifdef __cplusplus
 }

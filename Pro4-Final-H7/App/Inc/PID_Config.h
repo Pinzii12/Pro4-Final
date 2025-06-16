@@ -25,17 +25,19 @@ extern "C" {
 #define PID_INT_MIN	-0.5f
 #define PID_INT_MAX	0.5f
 
+
+// TODO: noch zu tunen, HW wurde nie fertig...
 #define PID_ROLL_KP	1.5f
 #define PID_ROLL_KI	0.2f
 #define PID_ROLL_KD 0.05f
 
-#define PID_PITCH_KP 2.0f
-#define PID_PITCH_KI 0.3f
-#define PID_PITCH_KD 0.10f
+#define PID_PITCH_KP 1.5f
+#define PID_PITCH_KI 0.2f
+#define PID_PITCH_KD 0.05f
 
-#define PID_YAW_KP 2.5f
-#define PID_YAW_KI 0.01f
-#define PID_YAW_KD 0.5f
+#define PID_YAW_KP 1.5f
+#define PID_YAW_KI 0.2f
+#define PID_YAW_KD 0.05f
 
 #ifdef __cplusplus
 }
