@@ -5,6 +5,18 @@
 extern "C" {
 #endif
 
+/**
+ ******************************************************************************
+ * @file           : mavlinkHandler.h
+ * @brief          : Beschreibt die Schnittstellen der Mavlink-Kommunikation.
+ ******************************************************************************
+ * @author Ralf Pianzola
+ * @date 19.04.2025
+ * @version 1.0
+ *
+ ******************************************************************************
+ */
+
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal.h"
 #include "cmsis_os.h"
@@ -15,22 +27,29 @@ extern "C" {
 #define MAVLINK_SYSTEM_ID 2
 #define flagIntReceived 0x01
 
+/**
+ * @brief Datenstruktur für eine empfangene MAVLink-Nachricht.
+ */
 typedef struct {
     uint8_t data[MAVLINK_RX_BUFFER_SIZE];
     uint16_t length;
 } mavlinkData_t;
 
+/**
+ * @brief Struktur fürs Quaternion der gewünschten Ausrichtung.
+ */
 typedef struct {
     float q[4];
 } gimbalAttitude_t;
 
 
 /* Funktion deklarieren */
+
+/**
+ * @brief Startet die Mavlink-Kommunikation
+ * Es werden alle RTOS-Task initalisiert und gestartet.
+ */
 void initMavlink(void);
-void sendHeartbeat(void);
-int8_t parseMavlinkMessage(mavlinkData_t*, mavlink_message_t*);
-void decodeMavlinkMessage(mavlink_message_t*);
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
 
 #ifdef __cplusplus
 }

@@ -6,6 +6,19 @@ extern "C" {
 #endif
 
 /**
+ ******************************************************************************
+ * @file           : magCalibration.h
+ * @brief          : Beinhaltetet die Offsets, welche per Python-Skript gewonnen
+ * 					 werden.
+ ******************************************************************************
+ * @author Ralf Pianzola
+ * @date 20.04.2025
+ * @version 1.0
+ *
+ ******************************************************************************
+ */
+
+/**
  * @brief   Hard-Iron-Offset-Korrektur für den BMM350.
  * @details Der Offset wird mittels Python-Programm ermittelt und nachher als
  * Array abgespeichert.

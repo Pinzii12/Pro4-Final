@@ -1,3 +1,14 @@
+/**
+ ******************************************************************************
+ * @file           : mavlinkHandler.c
+ * @brief          : Implementiert die Kommunikation mittels MAVLink.
+ ******************************************************************************
+ * @author Ralf Pianzola
+ * @date 19.04.2025
+ * @version 1.0
+ ******************************************************************************
+ */
+
 #include <mavlinkHandler.h>
 
 /* external defines ----------------------------------------------------------*/
@@ -5,6 +16,12 @@ extern UART_HandleTypeDef huart6;
 
 /* Private variables ---------------------------------------------------------*/
 static uint8_t rxBuffer[MAVLINK_RX_BUFFER_SIZE];
+
+/* Pre-Declarations ----------------------------------------------------------*/
+void sendHeartbeat(void);
+int8_t parseMavlinkMessage(mavlinkData_t *mavlinkMessage, mavlink_message_t *msg);
+void decodeMavlinkMessage(mavlink_message_t *msg);
+void handleGimbalAttitudeMsg(mavlink_gimbal_device_set_attitude_t *gimbal_attitude);
 
 /* Free-RTOS -----------------------------------------------------------------*/
 osEventFlagsId_t heartbeatFlag;
