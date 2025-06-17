@@ -1,0 +1,13 @@
+digraph "decodeMavlinkMessage"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="decodeMavlinkMessage",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Decodiert eine Mavlink-Message. Decodiert eine Mavlink-Message und verarbietet diese entsprechend wei..."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="processMavlinkMessageTask",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mavlink_handler_8c.html#aa808261c7ed482f4ff9cadce18f4cd75",tooltip="Verarbeitet eine empfange Nachricht. Sobald eine Nachricht in der Queue empfangen wird,..."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="initMavlink",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mavlink_handler_8c.html#a87933ea7bd4867a8c67e50da6f3cc917",tooltip="Startet die Mavlink-Kommunikation Es werden alle RTOS-Task initalisiert und gestartet."];
+}

@@ -1,0 +1,13 @@
+digraph "interruptReadBMI088a"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="interruptReadBMI088a",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="RTOS-Task zum Auslesen des Accerlerometers. Wird durch ein Flag aktiviert und startet den Datenabruf."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="bmi08a_get_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bmi08a_8c.html#aee8aaeb497ab6b061173248d73d5487c",tooltip="This API reads the accel data from the sensor, store it in the bmi08_sensor_data structure instance p..."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="bmi08a_get_set_regs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bmi08a_8c.html#a5b32dbd1a57b3dd377d05a9553d51f3c",tooltip="This API reads the data from the given register address of accel sensor."];
+}

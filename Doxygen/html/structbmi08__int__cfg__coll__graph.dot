@@ -1,0 +1,15 @@
+digraph "bmi08_int_cfg"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="bmi08_int_cfg",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Interrupt Configuration structure."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" accel_int_config_1\naccel_int_config_2",fontcolor="grey" ];
+  Node2 [id="Node000002",label="bmi08_accel_int_channel_cfg",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmi08__accel__int__channel__cfg.html",tooltip="Interrupt channel structure for accel."];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" int_pin_cfg",fontcolor="grey" ];
+  Node3 [id="Node000003",label="bmi08_int_pin_cfg",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmi08__int__pin__cfg.html",tooltip="Interrupt pin configuration structure."];
+  Node4 -> Node1 [id="edge3_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" gyro_int_config_1\ngyro_int_config_2",fontcolor="grey" ];
+  Node4 [id="Node000004",label="bmi08_gyro_int_channel_cfg",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmi08__gyro__int__channel__cfg.html",tooltip="Interrupt channel structure for gyro."];
+  Node3 -> Node4 [id="edge4_Node000004_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" int_pin_cfg",fontcolor="grey" ];
+}

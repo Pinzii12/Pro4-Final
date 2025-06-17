@@ -1,0 +1,25 @@
+var bmm350_8c =
+[
+    [ "bmm350_configure_interrupt", "bmm350_8c.html#acdfbda2325a4239862bf8a80584011bb", null ],
+    [ "bmm350_delay_us", "bmm350_8c.html#a0c4fe6f6be243b5d55b95fdfeb9506fd", null ],
+    [ "bmm350_enable_axes", "bmm350_8c.html#ae3d56200625bcec5b557a5c09acd8edf", null ],
+    [ "bmm350_enable_interrupt", "bmm350_8c.html#a68815b31c699a416e4a045ad120e6549", null ],
+    [ "bmm350_get_compensated_mag_xyz_temp_data", "bmm350_8c.html#ab9f4449ade6a20076d3c522e03db9e96", null ],
+    [ "bmm350_get_interrupt_status", "bmm350_8c.html#a57ef1e0bdd26fba069dfe2db8f5c7d8c", null ],
+    [ "bmm350_get_pmu_cmd_status_0", "bmm350_8c.html#a6b18ac550ffe7bbfbc99b6824020da12", null ],
+    [ "bmm350_get_regs", "bmm350_8c.html#a2a7555c3321f967c220c5405438754b0", null ],
+    [ "bmm350_init", "bmm350_8c.html#a8765eccd7955475306eb4794ea0645ae", null ],
+    [ "bmm350_magnetic_reset_and_wait", "bmm350_8c.html#a010c0741aee71698ef4d76d9d3f100f9", null ],
+    [ "bmm350_perform_self_test", "bmm350_8c.html#a98195df8725f1dd9f85409549979d434", null ],
+    [ "bmm350_read_sensortime", "bmm350_8c.html#a588e82e40dc3db071ae9ea7211ad59f2", null ],
+    [ "bmm350_read_uncomp_mag_temp_data", "bmm350_8c.html#a28ccf6ad8b5782bf4f94ffb41fed435f", null ],
+    [ "bmm350_set_ctrl_user", "bmm350_8c.html#acdea4c7a839a487b8e7997179c560a75", null ],
+    [ "bmm350_set_i2c_wdt", "bmm350_8c.html#a4fa8a194a271b5b8870048e35e992f6f", null ],
+    [ "bmm350_set_int_ctrl_ibi", "bmm350_8c.html#a67a17e7fd28e02059b94bc43717f2d17", null ],
+    [ "bmm350_set_odr_performance", "bmm350_8c.html#afb1995638f1a291e12807ea7c9bc3899", null ],
+    [ "bmm350_set_pad_drive", "bmm350_8c.html#aeccc77a3f6dd1feb47cf1a2d19a849cd", null ],
+    [ "bmm350_set_powermode", "bmm350_8c.html#add2bd6631abbd19fe28178b1c4c1e58a", null ],
+    [ "bmm350_set_regs", "bmm350_8c.html#af6ee12ae10658368cdfe4f377d9411e7", null ],
+    [ "bmm350_set_tmr_selftest_user", "bmm350_8c.html#ac00ad2a35b1f13deb1744aaed45f600f", null ],
+    [ "bmm350_soft_reset", "bmm350_8c.html#a3634dc2a3b2f0a2e5fa420dad1c273cf", null ]
+];

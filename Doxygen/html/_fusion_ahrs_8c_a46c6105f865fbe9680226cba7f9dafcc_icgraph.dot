@@ -1,0 +1,11 @@
+digraph "FusionAhrsGetGravity"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="FusionAhrsGetGravity",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Returns the direction of gravity in the sensor coordinate frame."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="FusionAhrsGetLinearAcceleration",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_fusion_ahrs_8c.html#a7d81dbd72e592de5737dba762597e639",tooltip="Returns the linear acceleration measurement equal to the accelerometer measurement with gravity remov..."];
+}

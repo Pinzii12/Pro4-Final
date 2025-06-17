@@ -1,0 +1,22 @@
+digraph "bmm350_dev"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="bmm350_dev",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="bmm350 device structure"];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" mag_comp",fontcolor="grey" ];
+  Node2 [id="Node000002",label="bmm350_mag_compensate",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__mag__compensate.html",tooltip="bmm350 magnetometer compensate structure"];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" dut_offset_coef",fontcolor="grey" ];
+  Node3 [id="Node000003",label="bmm350_dut_offset_coef",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__dut__offset__coef.html",tooltip="bmm350 magnetometer dut offset coefficient structure"];
+  Node4 -> Node2 [id="edge3_Node000002_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" dut_sensit_coef",fontcolor="grey" ];
+  Node4 [id="Node000004",label="bmm350_dut_sensit_coef",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__dut__sensit__coef.html",tooltip="bmm350 magnetometer dut sensitivity coefficient structure"];
+  Node5 -> Node2 [id="edge4_Node000002_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" dut_tco",fontcolor="grey" ];
+  Node5 [id="Node000005",label="bmm350_dut_tco",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__dut__tco.html",tooltip="bmm350 magnetometer dut tco structure"];
+  Node6 -> Node2 [id="edge5_Node000002_Node000006",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" dut_tcs",fontcolor="grey" ];
+  Node6 [id="Node000006",label="bmm350_dut_tcs",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__dut__tcs.html",tooltip="bmm350 magnetometer dut tcs structure"];
+  Node7 -> Node2 [id="edge6_Node000002_Node000007",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" cross_axis",fontcolor="grey" ];
+  Node7 [id="Node000007",label="bmm350_cross_axis",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structbmm350__cross__axis.html",tooltip="bmm350 magnetometer cross axis compensation structure"];
+  Node1 -> Node1 [id="edge7_Node000001_Node000001",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" mraw_override",fontcolor="grey" ];
+}

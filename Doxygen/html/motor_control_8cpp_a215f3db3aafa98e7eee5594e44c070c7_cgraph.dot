@@ -1,0 +1,23 @@
+digraph "motorControlTask"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="motorControlTask",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="FreeRTOS-Task zur Motorregelung des Gimbals."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="getErrorAngle",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$motor_control_8cpp.html#a1497318a25e2fa60b183f66c6f013ed1",tooltip="Berechnet den Fehlerwinkel. Der Fehlerwinkel der Achsen berechnet sich anhand des Achsenwinkels mit d..."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="getErrorQuaternion",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$motor_control_8cpp.html#ac678b7db8d1dff2b9b10146a07869531",tooltip="berechnet das Fehler-Qauternion, welches für Winkelabweichung benötigt wird."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Quaternion::normalize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_quaternion.html#ac9cc178bcc449e08499113c35feb2a2b",tooltip=" "];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Quaternion::norm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_quaternion.html#adff8214df62bb011e66baf7447d58b40",tooltip=" "];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="setPWMOutput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$motor_control_8cpp.html#a822c6a089b77c52ff25bf9acbf7c2802",tooltip="setzt den richtigen Duty-Cycle"];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="AS5048A::getRawRotation",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_a_s5048_a.html#a79f5ff855b3bf22a461dbfa617bfdf06",tooltip=" "];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="updatePIDController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$motor_control_8cpp.html#a54d55fa684e890d48a0814a3d673ab0e",tooltip="Aktualisiert den PID-Regler."];
+}

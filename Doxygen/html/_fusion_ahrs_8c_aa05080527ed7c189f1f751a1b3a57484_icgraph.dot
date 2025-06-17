@@ -1,0 +1,23 @@
+digraph "FusionAhrsReset"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="FusionAhrsReset",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Resets the AHRS algorithm. This is equivalent to reinitialising the algorithm while maintaining the c..."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="FusionAhrsInitialise",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_fusion_ahrs_8c.html#ac753e0112b48de5247710bdde3a77dcd",tooltip="Initialises the AHRS algorithm structure."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="initSensorFusion",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sensor_8c.html#a1376a3487bad23e043fc5e7347f287f4",tooltip="Startet die RTOS-Tasks der ganzen Sensoren und initalisiert den Timer."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="FusionAhrsUpdate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_fusion_ahrs_8c.html#af98205155fc3110da2e6bf410f33b4c0",tooltip="Updates the AHRS algorithm using the gyroscope, accelerometer, and magnetometer measurements."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="FusionAhrsUpdateExternal\lHeading",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_fusion_ahrs_8c.html#a5b23b676f809c0b8a78b0cad9f29abb7",tooltip="Updates the AHRS algorithm using the gyroscope, accelerometer, and heading measurements."];
+  Node4 -> Node6 [id="edge5_Node000004_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="FusionAhrsUpdateNoMagnetometer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_fusion_ahrs_8c.html#a16cba1de9039e57f2e25789e6ee64601",tooltip="Updates the AHRS algorithm using the gyroscope and accelerometer measurements only."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="madgwickTask",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sensor_8c.html#a6803f5e5b1e30c5696e294cb520e4564",tooltip="RTOS-Task des Madgwick-Filters. Wird durch einen Timer periodisch ausgelöst. Abhängig davo,..."];
+  Node7 -> Node3 [id="edge7_Node000007_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 -> Node7 [id="edge8_Node000004_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

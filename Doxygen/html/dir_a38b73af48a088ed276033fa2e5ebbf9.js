@@ -1,0 +1,27 @@
+var dir_a38b73af48a088ed276033fa2e5ebbf9 =
+[
+    [ "as5048a.h", "as5048a_8h.html", "as5048a_8h" ],
+    [ "bmi08.h", "bmi08_8h.html", "bmi08_8h" ],
+    [ "bmi08_defs.h", "bmi08__defs_8h.html", "bmi08__defs_8h" ],
+    [ "bmi08a.c", "bmi08a_8c.html", "bmi08a_8c" ],
+    [ "bmi08g.c", "bmi08g_8c.html", "bmi08g_8c" ],
+    [ "bmi08x.h", "bmi08x_8h.html", null ],
+    [ "bmm350.c", "bmm350_8c.html", "bmm350_8c" ],
+    [ "bmm350.h", "bmm350_8h.html", "bmm350_8h" ],
+    [ "bmm350_defs.h", "bmm350__defs_8h.html", "bmm350__defs_8h" ],
+    [ "bmm350_oor.c", "bmm350__oor_8c.html", "bmm350__oor_8c" ],
+    [ "bmm350_oor.h", "bmm350__oor_8h.html", "bmm350__oor_8h" ],
+    [ "Fusion.h", "_fusion_8h.html", null ],
+    [ "FusionAhrs.c", "_fusion_ahrs_8c.html", "_fusion_ahrs_8c" ],
+    [ "FusionAhrs.h", "_fusion_ahrs_8h.html", "_fusion_ahrs_8h" ],
+    [ "FusionAxes.h", "_fusion_axes_8h.html", "_fusion_axes_8h" ],
+    [ "FusionCalibration.h", "_fusion_calibration_8h.html", null ],
+    [ "FusionCompass.c", "_fusion_compass_8c.html", "_fusion_compass_8c" ],
+    [ "FusionCompass.h", "_fusion_compass_8h.html", "_fusion_compass_8h" ],
+    [ "FusionConvention.h", "_fusion_convention_8h.html", "_fusion_convention_8h" ],
+    [ "FusionMath.h", "_fusion_math_8h.html", "_fusion_math_8h" ],
+    [ "FusionOffset.c", "_fusion_offset_8c.html", "_fusion_offset_8c" ],
+    [ "FusionOffset.h", "_fusion_offset_8h.html", "_fusion_offset_8h" ],
+    [ "PID.h", "_p_i_d_8h_source.html", null ],
+    [ "quaternion.h", "quaternion_8h_source.html", null ]
+];
