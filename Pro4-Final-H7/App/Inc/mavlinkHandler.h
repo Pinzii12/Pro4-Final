@@ -21,6 +21,7 @@ extern "C" {
 #include "stm32h7xx_hal.h"
 #include "cmsis_os.h"
 #include "mavlink.h"
+#include "main.h"
 
 #define MAVLINK_RX_BUFFER_SIZE 512
 #define HEARTBEAT_INTERVAL 1000

@@ -19,14 +19,18 @@ static uint8_t rxBuffer[MAVLINK_RX_BUFFER_SIZE];
 
 /* Pre-Declarations ----------------------------------------------------------*/
 void sendHeartbeat(void);
-int8_t parseMavlinkMessage(mavlinkData_t *mavlinkMessage, mavlink_message_t *msg);
+int8_t parseMavlinkMessage(mavlinkData_t *mavlinkMessage,
+		mavlink_message_t *msg);
 void decodeMavlinkMessage(mavlink_message_t *msg);
-void handleGimbalAttitudeMsg(mavlink_gimbal_device_set_attitude_t *gimbal_attitude);
+void handleGimbalAttitudeMsg(
+		mavlink_gimbal_device_set_attitude_t *gimbal_attitude);
+void heartbeatLedTimerCallback(void *argument);
 
 /* Free-RTOS -----------------------------------------------------------------*/
 osEventFlagsId_t heartbeatFlag;
 osEventFlagsId_t mavlinkMessageReceivedFlag;
 osTimerId_t heartbeatTimerHandle;
+osTimerId_t heartbeatLedTimerHandle;
 osMessageQueueId_t mavlinkQueue;
 osMessageQueueId_t qTargetQueue;
 
@@ -41,6 +45,9 @@ static const osThreadAttr_t processMavlinkMessageTask_attributes = { .name =
 static const osTimerAttr_t heartbeatTimer_attributes = { .name =
 		"heartbeatTimer" };
 
+static const osTimerAttr_t heartbeatLedTimer_attributes = { .name =
+		"heartbeatLedTimer" };
+
 /**
  * @brief Sendet einen Heartbeat
  * Wird alle 1s vom Timer heartbeatTimer aufgerufen.
@@ -50,8 +57,6 @@ void sendHeartbeatTask(void *argument) {
 		osEventFlagsWait(heartbeatFlag, flagIntReceived, osFlagsWaitAny,
 		osWaitForever);
 		sendHeartbeat();
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_10, GPIO_PIN_SET);
-
 	}
 }
 
@@ -81,6 +86,15 @@ void heartbeatTimerCallback(void *argument) {
 }
 
 /**
+ * @brief Schaltet die Kommunikations-LED aus.
+ * Wird von heartbeatLedTimerHandle nach 0.5s aufgerufen.
+ */
+void heartbeatLedTimerCallback(void *argument) {
+	HAL_GPIO_WritePin(LED_COM_FLUGREGLER_GPIO_Port, LED_COM_FLUGREGLER_Pin,
+			GPIO_PIN_RESET);
+}
+
+/**
  * @brief Startet die Mavlink-Kommunikation
  * Es werden alle RTOS-Task initalisiert und gestartet.
  */
@@ -99,6 +113,9 @@ void initMavlink(void) {
 
 	osTimerStart(heartbeatTimerHandle, HEARTBEAT_INTERVAL);
 	HAL_UARTEx_ReceiveToIdle_DMA(&huart6, rxBuffer, MAVLINK_RX_BUFFER_SIZE);
+
+	heartbeatLedTimerHandle = osTimerNew(heartbeatLedTimerCallback, osTimerOnce,
+	NULL, &heartbeatLedTimer_attributes);
 
 	qTargetQueue = osMessageQueueNew(10, sizeof(float[4]), NULL);
 }
@@ -183,7 +200,9 @@ void decodeMavlinkMessage(mavlink_message_t *msg) {
 	case MAVLINK_MSG_ID_HEARTBEAT: {
 		mavlink_heartbeat_t heartbeat;
 		mavlink_msg_heartbeat_decode(msg, &heartbeat);
-		//TODO: hier noch eine Kom. LED ansteuern
+		HAL_GPIO_WritePin(LED_COM_FLUGREGLER_GPIO_Port, LED_COM_FLUGREGLER_Pin,
+				GPIO_PIN_SET);
+		osTimerStart(heartbeatLedTimerHandle, 500);
 		break;
 	}
 	case MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE: {
